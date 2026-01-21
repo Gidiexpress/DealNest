@@ -1,0 +1,18 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+<div class="email-body">
+    <h1>Great news!</h1>
+    <p>A freelancer, <strong>{{ freelancer.username }}</strong>, has accepted your deal: <strong>{{ deal.title
+            }}</strong>.</p>
+    <p>The work can now proceed once the deal is funded (if it hasn't been already).</p>
+
+    <div class="spacer">
+        <a href="{{ cta_url }}" class="btn">View Deal Details</a>
+    </div>
+
+    <p class="text-muted">
+        Next steps: You can now communicate with the freelancer in the deal discussion room.
+    </p>
+</div>
+{% endblock %}

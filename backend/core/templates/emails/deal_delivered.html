@@ -1,0 +1,14 @@
+{% extends 'emails/base_email.html' %}
+
+{% block content %}
+<h2>Work Delivered 📦</h2>
+<p>Hi {{ user.username }},</p>
+<p>The freelancer has submitted work for the deal <strong>"{{ deal.title }}"</strong>.</p>
+
+<p>Please review the submission within the dispute window. If everything looks good, approve the work to release the
+    funds.</p>
+
+<center>
+    <a href="{{ cta_url }}" class="btn">Review Submission</a>
+</center>
+{% endblock %}

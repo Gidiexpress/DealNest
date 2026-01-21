@@ -1,0 +1,16 @@
+{% extends 'emails/base_email.html' %}
+
+{% block content %}
+<h2>Deal Funded! 💰</h2>
+<p>Hi {{ user.username }},</p>
+<p>Great news! The deal <strong>"{{ deal.title }}"</strong> has been successfully funded by the client.</p>
+
+<p>Currently held in Escrow: <span class="highlight">₦{{ deal.amount|floatformat:2 }}</span></p>
+
+<p>You can now start working with confidence. The funds are secured and will be released to you upon successful
+    delivery.</p>
+
+<center>
+    <a href="{{ cta_url }}" class="btn">View Deal</a>
+</center>
+{% endblock %}

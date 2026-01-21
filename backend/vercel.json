@@ -1,0 +1,28 @@
+{
+    "builds": [
+        {
+            "src": "dealnest/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "dealnest/wsgi.py"
+        }
+    ],
+    "crons": [
+        {
+            "path": "/api/deals/cron/release-funds/",
+            "schedule": "0 * * * *"
+        }
+    ]
+}

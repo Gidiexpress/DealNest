@@ -1,0 +1,19 @@
+{% extends 'emails/base_email.html' %}
+
+{% block content %}
+<h2>Welcome to DealNest, {{ user.username }}! 👋</h2>
+<p>We are thrilled to have you on board. DealNest is the safest way to hire and get hired in Nigeria.</p>
+
+<p>With DealNest, you get:</p>
+<ul>
+    <li><strong>Secure Escrow:</strong> Funds are held safely until work is approved.</li>
+    <li><strong>Fair Disputes:</strong> Our admin team mediates any issues.</li>
+    <li><strong>Fast Payouts:</strong> Get paid directly to your bank account.</li>
+</ul>
+
+<p>Ready to start your first secure transaction?</p>
+
+<center>
+    <a href="{{ cta_url }}" class="btn">Go to Dashboard</a>
+</center>
+{% endblock %}

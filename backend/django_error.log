@@ -1,0 +1,24 @@
+WARNING 2026-01-08 09:56:41,716 log 14040 13908 Unauthorized: /api/auth/me/
+WARNING 2026-01-08 09:56:41,718 basehttp 14040 13908 "GET /api/auth/me/ HTTP/1.1" 401 172
+WARNING 2026-01-08 09:56:41,726 log 14040 13908 Unauthorized: /api/auth/me/
+WARNING 2026-01-08 09:56:41,727 basehttp 14040 13908 "GET /api/auth/me/ HTTP/1.1" 401 172
+WARNING 2026-01-08 09:56:41,768 log 14040 13908 Unauthorized: /api/auth/refresh/
+WARNING 2026-01-08 09:56:41,770 log 14040 6312 Unauthorized: /api/auth/refresh/
+WARNING 2026-01-08 09:56:41,772 basehttp 14040 13908 "POST /api/auth/refresh/ HTTP/1.1" 401 54
+WARNING 2026-01-08 09:56:41,772 basehttp 14040 6312 "POST /api/auth/refresh/ HTTP/1.1" 401 54
+WARNING 2026-01-08 09:56:49,516 log 14040 6312 Unauthorized: /api/auth/login/
+WARNING 2026-01-08 09:56:49,518 basehttp 14040 6312 "POST /api/auth/login/ HTTP/1.1" 401 63
+WARNING 2026-01-08 11:07:06,741 log 14040 18036 Unauthorized: /api/deals/9/messages/
+WARNING 2026-01-08 11:07:06,745 log 14040 17520 Unauthorized: /api/notifications/
+WARNING 2026-01-08 11:07:06,749 basehttp 14040 18036 "GET /api/deals/9/messages/ HTTP/1.1" 401 172
+WARNING 2026-01-08 11:07:06,753 basehttp 14040 17520 "GET /api/notifications/ HTTP/1.1" 401 172
+WARNING 2026-01-08 12:07:09,066 log 14040 8616 Unauthorized: /api/deals/3/messages/
+WARNING 2026-01-08 12:07:09,070 basehttp 14040 8616 "GET /api/deals/3/messages/ HTTP/1.1" 401 172
+WARNING 2026-01-08 15:08:59,110 log 14040 6864 Unauthorized: /api/notifications/
+WARNING 2026-01-08 15:08:59,112 log 14040 2156 Unauthorized: /api/auth/me/
+WARNING 2026-01-08 15:08:59,116 basehttp 14040 6864 "GET /api/notifications/ HTTP/1.1" 401 172
+WARNING 2026-01-08 15:08:59,117 basehttp 14040 2156 "GET /api/auth/me/ HTTP/1.1" 401 172
+WARNING 2026-01-08 15:08:59,131 log 14040 2156 Unauthorized: /api/auth/me/
+WARNING 2026-01-08 15:08:59,132 basehttp 14040 2156 "GET /api/auth/me/ HTTP/1.1" 401 172
+WARNING 2026-01-08 18:16:10,865 log 14040 5352 Unauthorized: /api/auth/me/
+WARNING 2026-01-08 18:16:10,873 basehttp 14040 5352 "GET /api/auth/me/ HTTP/1.1" 401 172

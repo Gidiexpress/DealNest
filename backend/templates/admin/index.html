@@ -1,0 +1,185 @@
+{% extends "unfold/layouts/base.html" %}{% load i18n unfold %}
+{% block breadcrumbs %}{% endblock %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:"DealNest Admin" }}{%
+endblock %}
+{% block branding %}
+<div class="flex items-center gap-2">
+    <div class="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center text-white"><span
+            class="material-symbols-outlined text-lg">payments</span></div>
+    <h1 id="site-name" class="text-xl font-bold tracking-tight border-none bg-transparent p-0"><a
+            href="{% url 'admin:index' %}" class="text-gray-900">{% trans "DealNest" %}</a></h1>
+</div>
+{% endblock %}
+{% block content %}
+<div class="px-4 py-8 md:px-8 bg-[#F9FAFB] min-h-screen">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
+        <div>
+            <h1 class="text-3xl font-black text-gray-900 border-none p-0 bg-transparent tracking-tight">{% trans
+                "Dashboard" %}</h1>
+            <p class="text-gray-500 mt-1 font-medium">{% trans "Plan, prioritize, and accomplish your tasks with ease."
+                %}</p>
+        </div>
+        <div class="flex items-center gap-3">
+            <a href="{% url 'admin:deals_deal_add' %}"
+                class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2.5 rounded-xl font-bold transition-all flex items-center gap-2 shadow-lg shadow-emerald-500/20"><span
+                    class="material-symbols-outlined text-sm">add</span>{% trans "Add Deal" %}</a>
+            <button
+                class="bg-white border border-gray-200 text-gray-700 px-6 py-2.5 rounded-xl font-bold hover:bg-gray-50 transition-all shadow-sm">{%
+                trans "Import Data" %}</button>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <div
+            class="bg-gradient-to-br from-emerald-600 to-emerald-900 p-6 rounded-[24px] shadow-xl text-white relative overflow-hidden group">
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                    <span class="text-sm font-bold opacity-80 uppercase tracking-wider">{% trans "Total Deals" %}</span>
+                    <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"><span
+                            class="material-symbols-outlined text-white text-sm">north_east</span></div>
+                </div>
+                <div class="text-5xl font-black mb-2 tracking-tighter">{{ total_deals|default:"0" }}</div>
+                <div class="flex items-center gap-2 mt-4 bg-white/10 w-max px-2 py-1 rounded-lg"><span
+                        class="material-symbols-outlined text-[10px]">trending_up</span><span
+                        class="text-[10px] font-bold tracking-wide">{% trans "INCREASED FROM LAST MONTH" %}</span></div>
+            </div>
+            <div class="absolute -right-4 -bottom-4 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
+        </div>
+        <div class="bg-white border border-gray-100 p-6 rounded-[24px] shadow-sm group">
+            <div class="flex justify-between items-start mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">{% trans "Completed Deals"
+                    %}</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-emerald-50 transition-colors">
+                    <span
+                        class="material-symbols-outlined text-gray-400 group-hover:text-emerald-600 text-sm">north_east</span>
+                </div>
+            </div>
+            <div class="text-5xl font-black mb-2 tracking-tighter text-gray-900">{{ completed_deals|default:"0" }}</div>
+            <div class="flex items-center gap-2 mt-4 text-emerald-600 font-bold text-[10px] tracking-wide uppercase">
+                <span class="material-symbols-outlined text-[10px]">trending_up</span>{% trans "Increased from last
+                month" %}
+            </div>
+        </div>
+        <div class="bg-white border border-gray-100 p-6 rounded-[24px] shadow-sm group">
+            <div class="flex justify-between items-start mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">{% trans "Active Deals" %}</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                    <span
+                        class="material-symbols-outlined text-gray-400 group-hover:text-blue-600 text-sm">north_east</span>
+                </div>
+            </div>
+            <div class="text-5xl font-black mb-2 tracking-tighter text-gray-900">{{ running_deals|default:"0" }}</div>
+            <div class="flex items-center gap-2 mt-4 text-blue-600 font-bold text-[10px] tracking-wide uppercase"><span
+                    class="material-symbols-outlined text-[10px]">sync</span>{% trans "Active in progress" %}</div>
+        </div>
+        <div class="bg-white border border-gray-100 p-6 rounded-[24px] shadow-sm group">
+            <div class="flex justify-between items-start mb-6">
+                <span class="text-sm font-bold text-gray-400 uppercase tracking-wider">{% trans "New Deals" %}</span>
+                <div
+                    class="w-8 h-8 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-orange-50 transition-colors">
+                    <span
+                        class="material-symbols-outlined text-gray-400 group-hover:text-orange-600 text-sm">north_east</span>
+                </div>
+            </div>
+            <div class="text-5xl font-black mb-2 tracking-tighter text-gray-900">{{ pending_deals|default:"0" }}</div>
+            <div class="flex items-center gap-2 mt-4 text-orange-600 font-bold text-[10px] tracking-wide uppercase">
+                <span class="material-symbols-outlined text-[10px]">schedule</span>{% trans "Awaiting funding" %}
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="lg:col-span-8 space-y-8">
+            <div class="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-xl font-black tracking-tight">{% trans "Project Analytics" %}</h2>
+                    <div class="text-xs font-bold text-gray-500 bg-gray-50 px-3 py-1 rounded-lg">{% trans "Weekly" %}
+                    </div>
+                </div>
+                <div class="h-64 flex items-end justify-between gap-4 px-4">
+                    {% for i in "1234567" %}<div class="flex-1 flex flex-col items-center">
+                        <div
+                            class="w-full max-w-[40px] rounded-2xl transition-all duration-300 relative {% if forloop.counter == 4 %}bg-emerald-600 h-[80%]{% elif forloop.counter == 3 %}bg-emerald-200 h-[50%]{% else %}bg-gray-100 h-[40%]{% endif %}">
+                        </div><span class="mt-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">{% cycle
+                            'S' 'M' 'T' 'W' 'T' 'F' 'S' %}</span>
+                    </div>{% endfor %}
+                </div>
+            </div>
+            <div class="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-black tracking-tight">{% trans "Team Collaboration" %}</h2><button
+                        class="text-xs font-bold text-gray-500 border border-gray-200 rounded-lg px-3 py-1">+ {% trans
+                        "Add Member" %}</button>
+                </div>
+                <div class="space-y-6">
+                    {% for user in recent_users %}<div class="flex items-center justify-between">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 font-black border border-emerald-100 uppercase">
+                                {{ user.username|slice:":2" }}</div>
+                            <div>
+                                <div class="font-black text-gray-900">{{ user.username }}</div>
+                                <div class="text-xs font-medium text-gray-500">Working on <span
+                                        class="text-emerald-600">{% cycle 'UI Redesign' 'API' 'Backend' %}</span></div>
+                            </div>
+                        </div>
+                        <div
+                            class="px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-700">
+                            {% trans "Active" %}</div>
+                    </div>{% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="lg:col-span-4 space-y-8">
+            <div class="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm flex flex-col items-center">
+                <h2 class="text-xl font-black tracking-tight self-start mb-8">{% trans "Project Progress" %}</h2>
+                <div class="relative w-48 h-24 mb-6">
+                    <div
+                        class="absolute inset-0 border-[16px] border-emerald-600 border-b-transparent rounded-full rotate-[135deg]">
+                    </div>
+                    <div class="absolute inset-x-0 bottom-0 text-center">
+                        <div class="text-4xl font-black text-gray-900">41%</div>
+                        <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{% trans "PROJECT
+                            ENDED" %}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white border border-gray-100 p-8 rounded-[24px] shadow-sm">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-xl font-black tracking-tight">{% trans "Project" %}</h2><a
+                        href="{% url 'admin:deals_deal_add' %}"
+                        class="text-[10px] font-black uppercase tracking-widest text-emerald-600">+ {% trans "New"
+                        %}</a>
+                </div>
+                <div class="space-y-6">
+                    {% for deal in recent_deals %}<div class="flex items-start gap-4">
+                        <div class="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-emerald-600">
+                            <span class="material-symbols-outlined text-sm">handshake</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="font-black text-sm text-gray-900">{{ deal.title }}</div>
+                            <div class="text-[10px] font-bold text-gray-400 uppercase mt-1">{% trans "DUE DATE" %}: {{
+                                deal.deadline|default:"NOT SET" }}</div>
+                        </div>
+                    </div>{% empty %}<div class="text-center py-4 text-xs font-bold text-gray-400 uppercase">{% trans
+                        "No Active Projects" %}</div>{% endfor %}
+                </div>
+            </div>
+            <div class="bg-gray-900 p-8 rounded-[24px] shadow-xl relative overflow-hidden">
+                <h2 class="text-xl font-black tracking-tight text-white mb-6 relative z-10">{% trans "Time Tracker" %}
+                </h2>
+                <div class="text-5xl font-black text-white tracking-tighter mb-8 relative z-10">01:24:08</div>
+                <div class="flex items-center gap-4 relative z-10">
+                    <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white"><span
+                            class="material-symbols-outlined">pause</span></div>
+                    <div class="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center text-white"><span
+                            class="material-symbols-outlined">stop</span></div>
+                </div>
+                <div
+                    class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full border-[10px] border-white/5">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

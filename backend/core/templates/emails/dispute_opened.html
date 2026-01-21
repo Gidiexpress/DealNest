@@ -1,0 +1,25 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+<div class="email-body">
+    <h1 class="text-error">Dispute Opened</h1>
+    <p>We are writing to notify you that a dispute has been opened for the deal: <strong>{{ deal.title }}</strong>.</p>
+    <p>The dispute was opened by <strong>{{ opener.username }}</strong>.</p>
+
+    <div class="alert">
+        <p class="alert-title">What happens next?</p>
+        <p class="alert-body">
+            Our support team will review the deal history, discussions, and evidence. We may reach out for further
+            clarification.
+        </p>
+    </div>
+
+    <div class="spacer">
+        <a href="{{ cta_url }}" class="btn btn-warning">View Dispute Details</a>
+    </div>
+
+    <p class="text-muted">
+        Please continue to provide any relevant information in the deal discussion room throughout this process.
+    </p>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'emails/base_email.html' %}
+
+{% block content %}
+<h2>Payout Processed 💸</h2>
+<p>Hi {{ user.username }},</p>
+<p>We have successfully processed a payout of <span class="highlight">₦{{ amount|floatformat:2 }}</span> to your bank
+    account.</p>
+
+<p><strong>Reference:</strong> {{ reference }}</p>
+
+<p>The funds should reflect in your account shortly, depending on bank processing times.</p>
+
+<center>
+    <a href="{{ cta_url }}" class="btn">View Finances</a>
+</center>
+{% endblock %}

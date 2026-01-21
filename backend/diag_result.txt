@@ -1,0 +1,26 @@
+============================================================
+PAYSTACK DIAGNOSTIC
+============================================================
+
+[1] ENV VARS
+PUBLIC: pk_test_12fcd0aa8127d3d4add418...
+SECRET: sk_test_e9019b27a9e1e2f3032564...
+
+[2] DB SETTINGS
+Gateway: paystack
+DB PK: EMPTY
+DB SK: EMPTY
+
+[3] GATEWAY
+Type: PaystackGateway
+Key: sk_test_e9019b27a9e1e2f3032564...
+
+[4] BANK API TEST
+Status: True
+Msg: Banks retrieved
+Banks: 221
+
+[5] INIT PAYMENT TEST
+Status: True
+Msg: Authorization URL created
+SUCCESS: Got auth URL

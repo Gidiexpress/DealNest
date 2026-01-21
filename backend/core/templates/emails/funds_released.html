@@ -1,0 +1,24 @@
+{% extends "emails/base_email.html" %}
+
+{% block content %}
+<div class="email-body">
+    <h1 class="text-success">Funds Released! 💰</h1>
+    <p>Congratulations! The funds for the deal <strong>{{ deal.title }}</strong> have been released.</p>
+    <p>An amount of <strong>₦{{ amount }}</strong> (after platform fees) has been added to your DealNest wallet.</p>
+
+    <div class="alert alert-success">
+        <p class="alert-title">Wallet Updated</p>
+        <p class="alert-body">
+            You can withdraw these funds to your bank account at any time from your dashboard.
+        </p>
+    </div>
+
+    <div class="spacer">
+        <a href="{{ cta_url }}" class="btn btn-success-alt">Go to Dashboard</a>
+    </div>
+
+    <p class="text-muted">
+        Thank you for using DealNest. We hope to see you on another deal soon!
+    </p>
+</div>
+{% endblock %}
