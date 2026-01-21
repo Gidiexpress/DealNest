@@ -13,3 +13,4 @@ gunicorn
 django-unfold
 django-storages
 boto3
+whitenoise

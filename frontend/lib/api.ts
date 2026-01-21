@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+if (!API_URL && process.env.NODE_ENV === 'production') {
+    throw new Error("❌ NEXT_PUBLIC_API_URL is missing in production environment variables.");
+}
+
+const baseURL = API_URL || 'http://localhost:8000/api';
 
 const api = axios.create({
     baseURL: API_URL,

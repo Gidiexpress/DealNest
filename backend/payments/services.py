@@ -202,7 +202,7 @@ def get_gateway():
     env_flutter_public = getattr(settings, 'FLUTTERWAVE_PUBLIC_KEY', '') or ''
     env_flutter_secret = getattr(settings, 'FLUTTERWAVE_SECRET_KEY', '') or ''
 
-        if not settings_obj:
+    if not settings_obj:
         # Fallback to env if DB not ready
         return PaystackGateway(
             public_key=env_paystack_public,

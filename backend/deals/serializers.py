@@ -21,7 +21,6 @@ class DealMessageSerializer(serializers.ModelSerializer):
         fields = ['id', 'user', 'message', 'files', 'created_at']
 
 class DealSerializer(serializers.ModelSerializer):
-class DealSerializer(serializers.ModelSerializer):
     client = UserSerializer(read_only=True)  # Will be overridden dynamically or check context? 
     # Actually, we should use Public for both by default, and only show full details if 'me'?
     # Safer: Use PublicUserSerializer by default.
