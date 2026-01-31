@@ -336,23 +336,9 @@ UNFOLD = {
 }
 
 # CORS
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True 
-else:
-    CORS_ALLOWED_ORIGINS = [
-        os.environ.get('FRONTEND_URL', 'https://dealnest.com'),
-    ]
-    # Fallback to allow all if environment var lists multiple or if debugging proved hard
-    # But for safety, let's keep restricted.
-    # Actually, let's make it robust:
-    frontend_url = os.environ.get('FRONTEND_URL')
-    if frontend_url:
-        if ',' in frontend_url:
-            CORS_ALLOWED_ORIGINS = frontend_url.split(',')
-        else:
-            CORS_ALLOWED_ORIGINS = [frontend_url]
-            
-    CORS_ALLOW_CREDENTIALS = True
+    # DEBUGGING: Allow all to rule out CORS
+    CORS_ALLOW_ALL_ORIGINS = True
+    # CORS_ALLOWED_ORIGINS = [ ... ]
 
 CSRF_USE_SESSIONS = True
 CSRF_TRUSTED_ORIGINS = [
