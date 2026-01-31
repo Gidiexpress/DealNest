@@ -336,9 +336,9 @@ UNFOLD = {
 }
 
 # CORS
-    # DEBUGGING: Allow all to rule out CORS
-    CORS_ALLOW_ALL_ORIGINS = True
-    # CORS_ALLOWED_ORIGINS = [ ... ]
+# DEBUGGING: Allow all to rule out CORS
+CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOWED_ORIGINS = [ ... ]
 
 CSRF_USE_SESSIONS = True
 CSRF_TRUSTED_ORIGINS = [
