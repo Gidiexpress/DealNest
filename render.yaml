@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: dealnest-backend
+    env: python
+    region: frankfurt
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn dealnest.wsgi:application"
+    rootDir: backend
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "false"
+      - key: ALLOWED_HOSTS
+        value: "*"
+      # DATABASE_URL will be added manually in dashboard (pointing to Supabase)
