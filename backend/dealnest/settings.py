@@ -335,11 +335,18 @@ UNFOLD = {
 }
 
 # CORS
-# DEBUGGING: Allow all to rule out CORS
-CORS_ALLOW_ALL_ORIGINS = True
-# CORS_ALLOWED_ORIGINS = [ ... ]
+CORS_ALLOW_ALL_ORIGINS = False # Disable wildcard
+CORS_ALLOW_CREDENTIALS = True # Allow cookies/auth headers
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://dealnestgo.vercel.app", # Explicitly add frontend
+]
+# Add dynamic frontend url if set
+if os.environ.get('FRONTEND_URL'):
+    CORS_ALLOWED_ORIGINS.append(os.environ.get('FRONTEND_URL'))
 
-CSRF_USE_SESSIONS = True
+CSRF_USE_SESSIONS = False # Use token for APIs
+CSRF_COOKIE_HTTPONLY = False # Allow JS to read CSRF token
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
@@ -348,10 +355,11 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.ngrok.io",
     "https://*.onrender.com",
     "https://*.vercel.app",
+    "https://dealnestgo.vercel.app", # Explicitly add user's frontend
 ]
 
 # Frontend URL for callbacks
-FRONTEND_URL = os.environ.get('FRONTEND_URL', 'http://localhost:3000')
+FRONTEND_URL = os.environ.get('FRONTEND_URL', 'https://dealnestgo.vercel.app')
 
 # Paystack Configuration
 PAYSTACK_PUBLIC_KEY = os.environ.get('PAYSTACK_PUBLIC_KEY', '')
