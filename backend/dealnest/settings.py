@@ -94,10 +94,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dealnest.wsgi.application'
 
 # Database
-DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-        conn_max_age=600
+        conn_max_age=0, # Must be 0 for Supabase Transaction Pooler
+        ssl_require=True # Safer for production
     )
 }
 
@@ -121,9 +121,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / "media"
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Removed duplicates
 
 # Storage Configuration (Supabase/S3)
 if os.environ.get('USE_S3') == 'True':
