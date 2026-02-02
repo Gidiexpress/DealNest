@@ -94,6 +94,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dealnest.wsgi.application'
 
 # Database
+DATABASES = {
     'default': dj_database_url.config(
         default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
         conn_max_age=0, # Must be 0 for Supabase Transaction Pooler
